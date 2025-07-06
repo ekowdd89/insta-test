@@ -19,9 +19,15 @@
         </UCarousel>
 
         <div class="flex items-center gap-3 mb-2 mt-3 text-lg text-gray-700">
+            <NuxtLink>
             <UIcon name="i-heroicons-heart" @click="liked" class="text-red-700" />
-            <UIcon name="i-heroicons-chat-bubble-left"  />
-            <UIcon name="i-heroicons-paper-airplane" />
+            </NuxtLink>
+            <NuxtLink :to="`/comment/${post.id}`" class="m-0 p-0">
+                <UIcon name="i-heroicons-chat-bubble-left"  />
+            </NuxtLink>
+            <NuxtLink>
+                <UIcon name="i-heroicons-paper-airplane" />
+            </NuxtLink>
         </div>
 
         <p class="text-sm">
