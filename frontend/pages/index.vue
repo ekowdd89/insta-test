@@ -1,6 +1,6 @@
 <template>
     <UContainer class="max-w-xl mx-auto">
-        <HeaderIG :auth="true" />
+        <HeaderIG :auth="!!auth.token" />
         <StoryCircle />
         <Post v-for="post in posts" :key="post.id" :post="post" :liked="liked" />
         <!-- <BottomNav /> -->
@@ -9,16 +9,12 @@
 <script setup lang="ts">
 import { gql, provideClient, useQuery } from '@urql/vue'
 import Post from '~/components/Post.vue';
-import auth from '~/middlewares/auth.g'
 import { useUrqlClientByResource } from '~/utils/useUrqlClientByResource';
-
-definePageMeta({
-    middleware: [auth]
-})
-
+const auth = useAuthStore();
 const liked = () => {
     alert('liked')
 }
+
 
 interface PostType {
         id: string | number;

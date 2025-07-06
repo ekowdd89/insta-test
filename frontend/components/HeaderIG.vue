@@ -13,8 +13,11 @@
         <NuxtLink to="/notifications">
             <UIcon name="i-heroicons-heart" class="w-6 h-6" />
         </NuxtLink>
-        <NuxtLink to="/profile">
+        <NuxtLink v-if="auth" to="/profile">
             <UAvatar size="sm" src="https://i.pravatar.cc/150?img=7" />
+        </NuxtLink>
+         <NuxtLink v-else to="/auth/login">
+            <UIcon name="i-heroicons-user" class="w-6 h-6" />
         </NuxtLink>
         </div>
     </UContainer>

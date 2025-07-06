@@ -28,19 +28,21 @@
 </template>
 
 <script setup lang="ts">
+
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
-
+import auth from '~/middlewares/auth.g'
 const caption = ref('')
 const files = ref<File[]>([])
 const previewImages = ref<string[]>([])
 const loading = ref(false)
 const errorMsg = ref('')
 const router = useRouter()
-
-// const auth = useAuthStore()
 const token = localStorage.getItem('token')
+definePageMeta({
+    middleware: [auth]
+})
 
 const handleFileChange = (e: Event) => {
     const target = e.target as HTMLInputElement

@@ -16,7 +16,6 @@ class Logout extends Mutation
         'name' => 'logout',
         'middleware' => ['auth:api'],
     ];
-
     public function type(): Type
     {
         return Type::boolean();
@@ -25,7 +24,7 @@ class Logout extends Mutation
 
     public function resolve($root, array $args)
     {
-
+        // dd(auth()->user());
         auth('api')->logout();
         return true;
     }
