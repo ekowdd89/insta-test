@@ -32,3 +32,20 @@
 - laravel 12
    - jwt -> tymon/jwt-auth
    - graphql ->  rebing/graphql-laravel
+
+
+# Backend
+```bash
+
+    http://localhost:8000/v1/{resource} # public, user, post
+```
+
+# frontend 
+```bash
+
+  http://localhost:3000 # all post
+  http://localhost:3000/auth/login # auth
+  http://localhost:3000/comment/{id} # commet
+
+```
+
