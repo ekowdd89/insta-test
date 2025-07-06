@@ -1,0 +1,21 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  PORT: 8000
+  HOST: 0.0.0.0
+
+tasks:
+  backend:
+    cmds:
+      - cd backend && php artisan serve --host={{.HOST}} --port={{.PORT}}
+    silent: true
+  frontend:
+    cmds:
+      - cd frontend && npm run dev
+    silent: true
+  test:
+    cmds:
+      - php test.php
+    silent: true

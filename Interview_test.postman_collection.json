@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "c222d94b-7b1f-4e77-b07e-9cca6c339601",
+		"name": "Interview_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1336096"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation { \n    login(email: \"farrell.addison@example.net\", password: \"password\") { access_token token_type expires_in user {id name email }  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/v1/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdjEvdXNlciIsImlhdCI6MTc1MTY0ODE0MiwiZXhwIjoxNzUxNjUxNzQyLCJuYmYiOjE3NTE2NDgxNDIsImp0aSI6Im0xYnB0Nk0zTVNOaDNmNWsiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.FPPal5uZd6gixOgRKoekQPXT_DlSXPNgoUEAKGQsgK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation { \n    createComment(post_id: 4, comment: \"comment\") { \n        id\n        caption\n        media {\n            url\n        }\n        comments {\n            id\n            content\n        }\n     }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/v1/post",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdjEvdXNlciIsImlhdCI6MTc1MTY4MzI1MiwiZXhwIjoxNzUxNjg2ODUyLCJuYmYiOjE3NTE2ODMyNTIsImp0aSI6Inh5b3VTUklDS1EzZVJSa2siLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.fqPqTXGV2p9hD9Oggy8iVAtIrIkFWM3tsKfdX-fIF2I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation { \n    likePost(post_id: 4, liked: true) { \n        id\n        liked\n     }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/v1/post",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdjEvdXNlciIsImlhdCI6MTc1MTY0ODE0MiwiZXhwIjoxNzUxNjUxNzQyLCJuYmYiOjE3NTE2NDgxNDIsImp0aSI6Im0xYnB0Nk0zTVNOaDNmNWsiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.FPPal5uZd6gixOgRKoekQPXT_DlSXPNgoUEAKGQsgK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "operations",
+							"value": "{\"query\": \"mutation($caption: String!, $media: [Upload!]) { createPost(caption: $caption, media: $media) { id caption media { url type } } }\",\n  \"variables\": {\n    \"caption\": \"Hello World\",\n    \"media\": [null, null]\n  }\n}",
+							"type": "text"
+						},
+						{
+							"key": "map",
+							"value": "{\"0\": [\"variables.media.0\"],\"1\": [\"variables.media.1\"]}",
+							"type": "text"
+						},
+						{
+							"key": "0",
+							"type": "file",
+							"src": "postman-cloud:///1f058fb4-eb00-4740-a2a5-007d9dd1e0df"
+						},
+						{
+							"key": "1",
+							"type": "file",
+							"src": "postman-cloud:///1f058fb5-7d13-4790-9e93-99cd449a16df"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/v1/post",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdjEvdXNlciIsImlhdCI6MTc1MTY0ODE0MiwiZXhwIjoxNzUxNjUxNzQyLCJuYmYiOjE3NTE2NDgxNDIsImp0aSI6Im0xYnB0Nk0zTVNOaDNmNWsiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.FPPal5uZd6gixOgRKoekQPXT_DlSXPNgoUEAKGQsgK8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "operations",
+							"value": "{\"query\": \"mutation($caption: String!, $media: [Upload!]) { createPost(caption: $caption, media: $media) { id caption media { url type } } }\",\n  \"variables\": {\n    \"caption\": \"Hello World\",\n    \"media\": [null, null]\n  }\n}",
+							"type": "text"
+						},
+						{
+							"key": "map",
+							"value": "{\"0\": [\"variables.media.0\"],\"1\": [\"variables.media.1\"]}",
+							"type": "text"
+						},
+						{
+							"key": "0",
+							"type": "file",
+							"src": "postman-cloud:///1f058fb4-eb00-4740-a2a5-007d9dd1e0df"
+						},
+						{
+							"key": "1",
+							"type": "file",
+							"src": "postman-cloud:///1f058fb5-7d13-4790-9e93-99cd449a16df"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/v1/post",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

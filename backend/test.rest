@@ -1,0 +1,27 @@
+# POST http://127.0.0.1:8000/v1/user
+# Content-Type: application/json
+
+# {
+#     "query":"mutation { login(email: \"farrell.addison@example.net\",password: \"password\") { access_token token_type expires_in user {id name email }  } }"
+# }
+
+
+
+
+
+# POST http://127.0.0.1:8000/v1/user
+# Content-Type: application/json
+
+# {
+#     "query":"mutation { register(name:\"eko\",email: \"eko.test@example.net\",password: \"password\") { id name email } }"
+# }
+
+
+POST http://127.0.0.1:8000/v1/post
+Content-Type: application/json
+Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdjEvdXNlciIsImlhdCI6MTc1MTY0MTA1OCwiZXhwIjoxNzUxNjQ0NjU4LCJuYmYiOjE3NTE2NDEwNTgsImp0aSI6IlBZTlFIdVVJdnBKdFJQNk0iLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.bW0eFmwEHSP174veXakAH14STteiA6MUZSRDiV4v1DI`
+
+{
+    "query":"mutation { createPost(caption: \"demo\") { id caption } }"
+}
+
