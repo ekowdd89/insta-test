@@ -4,6 +4,10 @@
 ```bash
     task backend
     task frontend
+    task clear
+    task migrate
+    task jwtkey
+    task seed
 ```
 
 
@@ -12,6 +16,10 @@
 ```bash
     make backend
     make frontend
+    make clear
+    make migrate
+    make jwtkey
+    make seed
 ```
 
 ## Note
